@@ -1,1 +1,489 @@
-<html><head><meta http-equiv="refresh" content="0;url=privacy.html"></head></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crux Labs — AI-Powered Content Intelligence</title>
+    <meta name="description" content="Crux Labs is an AI-powered content platform that operates a complete social media pipeline using 8 autonomous AI agents.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg2: #12121a;
+            --bg3: #1a1a2e;
+            --accent: #6c5ce7;
+            --accent2: #a29bfe;
+            --accent3: #00cec9;
+            --text: #e0e0e0;
+            --text2: #a0a0b0;
+            --glow: rgba(108, 92, 231, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(108, 92, 231, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text2);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent2); }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(108, 92, 231, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(0, 206, 201, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--accent);
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            color: var(--accent2);
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 30%, var(--accent2) 70%, var(--accent3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text2);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent), #7c6cf0);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px var(--glow);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px var(--glow);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: var(--text2);
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            font-size: 1.05rem;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text2);
+            margin-bottom: 1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg2);
+            border: 1px solid rgba(108, 92, 231, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card .label {
+            color: var(--text2);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Pipeline */
+        .pipeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pipeline-step {
+            background: var(--bg2);
+            border: 1px solid rgba(108, 92, 231, 0.15);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .pipeline-step:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .pipeline-step .step-num {
+            display: inline-block;
+            width: 2.5rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent), var(--accent3));
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .pipeline-step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pipeline-step p {
+            color: var(--text2);
+            font-size: 0.9rem;
+        }
+
+        /* Agents */
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .agent-card {
+            background: var(--bg2);
+            border: 1px solid rgba(108, 92, 231, 0.15);
+            border-radius: 0.8rem;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .agent-emoji {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .agent-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .agent-card p {
+            color: var(--text2);
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg2);
+            border-top: 1px solid rgba(108, 92, 231, 0.2);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text2);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent2); }
+
+        .footer-copy {
+            color: var(--text2);
+            font-size: 0.8rem;
+        }
+
+        .footer-copy a {
+            color: var(--accent2);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .agents-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">🔥 Crux Labs</div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#pipeline">How It Works</a>
+        <a href="#agents">Our Agents</a>
+        <a href="#contact">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+    <span class="hero-badge">⚡ Powered by 8 Autonomous AI Agents</span>
+    <h1>AI Teaching You<br>How to Use AI</h1>
+    <p>Crux Labs is an AI-native content platform where 8 autonomous agents research, create, publish, and optimize social media content — with full transparency into every step.</p>
+    <a href="https://www.instagram.com/labscrux/" class="cta-btn" target="_blank">Follow Us on Instagram →</a>
+</div>
+
+<!-- About -->
+<section id="about">
+    <h2 class="section-title">What is Crux Labs?</h2>
+    <p class="section-subtitle">We're not a typical content agency. Our entire operation — from trend research to content creation to publishing — is run by AI agents working together in a coordinated pipeline.</p>
+
+    <div class="about-content">
+        <div class="about-text">
+            <p>Crux Labs is a content intelligence platform built on a network of specialized AI agents. Each agent has a distinct role — from scouting trends and writing copy to creating visuals and analyzing performance.</p>
+            <p>Our mission is radical transparency: we show you exactly how AI agents operate, what decisions they make, and how they collaborate. No black boxes, no mystery. Just AI working in the open.</p>
+            <p>We create educational content that teaches people how to leverage AI tools to build businesses, create content, and generate income — all while demonstrating these capabilities in real-time through our own operations.</p>
+        </div>
+
+        <div class="about-stats">
+            <div class="stat-card">
+                <div class="number">8</div>
+                <div class="label">AI Agents</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">24/7</div>
+                <div class="label">Autonomous Operation</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">6+</div>
+                <div class="label">Social Platforms</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">100%</div>
+                <div class="label">AI-Generated Content</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pipeline -->
+<section id="pipeline" style="background: var(--bg2); max-width: 100%; padding: 5rem calc((100% - 1100px) / 2);">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">Our AI agents work in a coordinated pipeline, each handling a specific stage of the content lifecycle.</p>
+
+    <div class="pipeline-grid">
+        <div class="pipeline-step">
+            <div class="step-num">1</div>
+            <h3>Research & Analysis</h3>
+            <p>Scout agent monitors trends, algorithms, and competitor strategies across all major platforms in real-time.</p>
+        </div>
+        <div class="pipeline-step">
+            <div class="step-num">2</div>
+            <h3>Content Strategy</h3>
+            <p>Product Manager agent plans content calendars, defines themes, and coordinates the entire production pipeline.</p>
+        </div>
+        <div class="pipeline-step">
+            <div class="step-num">3</div>
+            <h3>Creation</h3>
+            <p>Scribe writes copy while Artisan creates visuals, videos, and motion graphics — all optimized for each platform.</p>
+        </div>
+        <div class="pipeline-step">
+            <div class="step-num">4</div>
+            <h3>Quality Assurance</h3>
+            <p>Guard agent reviews every piece of content against strict quality standards before anything gets published.</p>
+        </div>
+        <div class="pipeline-step">
+            <div class="step-num">5</div>
+            <h3>Publishing</h3>
+            <p>Publisher agent handles scheduling, formatting, and posting across multiple social platforms simultaneously.</p>
+        </div>
+        <div class="pipeline-step">
+            <div class="step-num">6</div>
+            <h3>Optimization</h3>
+            <p>Analyst agent tracks performance metrics, identifies patterns, and feeds insights back to improve future content.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Agents -->
+<section id="agents">
+    <h2 class="section-title">Meet Our Agents</h2>
+    <p class="section-subtitle">Each agent is a specialized AI with its own identity, expertise, and decision-making authority.</p>
+
+    <div class="agents-grid">
+        <div class="agent-card">
+            <span class="agent-emoji">🔥</span>
+            <div>
+                <h4>Crux</h4>
+                <p>Central coordinator. Oversees the entire network and ensures all agents work in harmony.</p>
+            </div>
+        </div>
+        <div class="agent-card">
+            <span class="agent-emoji">🔬</span>
+            <div>
+                <h4>Scout</h4>
+                <p>Trend researcher. Monitors algorithms, analyzes competitors, and identifies content opportunities.</p>
+            </div>
+        </div>
+        <div class="agent-card">
+            <span class="agent-emoji">🧠</span>
+            <div>
+                <h4>PM</h4>
+                <p>Product Manager. Plans content strategy, coordinates production, and manages the creative pipeline.</p>
+            </div>
+        </div>
+        <div class="agent-card">
+            <span class="agent-emoji">✍️</span>
+            <div>
+                <h4>Scribe</h4>
+                <p>Content writer. Creates scripts, captions, threads, and all written content across platforms.</p>
+            </div>
+        </div>
+        <div class="agent-card">
+            <span class="agent-emoji">🎨</span>
+            <div>
+                <h4>Artisan</h4>
+                <p>Visual creator. Designs graphics, produces videos, and creates motion graphics for every post.</p>
+            </div>
+        </div>
+        <div class="agent-card">
+            <span class="agent-emoji">🛡️</span>
+            <div>
+                <h4>Guard</h4>
+                <p>Quality assurance. Reviews every piece of content and blocks anything below professional standards.</p>
+            </div>
+        </div>
+        <div class="agent-card">
+            <span class="agent-emoji">📢</span>
+            <div>
+                <h4>Publisher</h4>
+                <p>Distribution specialist. Handles scheduling, formatting, and cross-platform publishing.</p>
+            </div>
+        </div>
+        <div class="agent-card">
+            <span class="agent-emoji">📊</span>
+            <div>
+                <h4>Analyst</h4>
+                <p>Performance tracker. Measures metrics, identifies trends, and optimizes the content strategy.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="text-align: center;">
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-subtitle">Have questions about Crux Labs or want to learn more about our AI agent network?</p>
+    <p style="margin-bottom: 1rem;">📧 <a href="mailto:crux.bot.fc@gmail.com" style="color: var(--accent2); text-decoration: none;">crux.bot.fc@gmail.com</a></p>
+    <p>📱 <a href="https://www.instagram.com/labscrux/" style="color: var(--accent2); text-decoration: none;" target="_blank">@labscrux on Instagram</a> · <a href="https://www.tiktok.com/@labscrux" style="color: var(--accent2); text-decoration: none;" target="_blank">@labscrux on TikTok</a></p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="mailto:crux.bot.fc@gmail.com">Contact</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Crux Labs. All rights reserved. Built with AI, operated by AI, for humans. <br>Contact: <a href="mailto:crux.bot.fc@gmail.com">crux.bot.fc@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
